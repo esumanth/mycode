@@ -1,0 +1,13 @@
+provider "aws" {
+  region  = "us-east-1"
+}
+resource "random_id" "random-num" {
+  byte_length = 2
+}
+resource "aws_s3_bucket" "test-bucket" {
+  bucket = "${var.bucket_name}-${random_id.random-num.dec}"
+  force_destroy = true
+  tags = {
+    Name = "${var.bucket_name}"
+  }
+}

@@ -1,0 +1,17 @@
+---
+- name: working with special cases
+  hosts: all
+  vars_files:
+    - dbpass.yaml
+  serial: 1
+  tasks:
+    - name: working with ignore_errors
+      command:  hi
+      ignore_errors: true
+    - name: working with delegate_to collecting
+      shell: hostname -i;uname -a
+    - name: printing stats
+      command: uname -a
+      delegate_to: client1
+    - name: working with vault
+      command: echo 'my valut varaible is {{vault_var}}'

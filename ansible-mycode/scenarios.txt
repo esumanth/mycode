@@ -1,0 +1,166 @@
+1. Configuring ansible setup as below
+
+	1. Spin up three servers
+	
+	2. Make one server as controller
+	
+	3. Make sure you are logging in to the client machines with out password from controller
+
+
+2. Perform the below tasks
+	
+	1. Create one file in the controller server i.e., testfile.txt with some content "Hi all welcome to Dvs"
+ make sure that you are copying this file to all client            nodes to /tmp/ directory
+	
+	2. Make sure that you are installing telnet package in all the client nodes
+	
+	3. Enable & restart the telnet package
+	
+	4. Clone the url "https://github.com/shan5a6/myweb.git" to /tmp/myweb 
+	
+	5. Print the output of client hostname on the terminal using debug
+	
+	6. Make sure that you are replacing word Dvs with DvsTechnoloiges in /tmp/testfile.txt
+	
+	7. Collect the data from "http://dummy.restapiexample.com/api/v1/employees" and store to a variable & print the data
+	
+	8. Parse the data recived above( step 7) & print only employe name & salary.
+	
+
+
+3. Install and configure apache
+Solution:
+
+
+---
+- name: Installing httpd
+
+  hosts: app
+
+  tasks:
+
+    - name: collecting public ipaddress
+
+      command: curl http://169.254.169.254/latest/meta-data/public-ipv4
+
+      register: output
+
+
+    - set_fact: ipaddress="{{output.stdout}}"
+
+
+    - name: Installing apache
+
+      yum:
+                name: httpd
+
+        state: present
+
+
+    - name: enabling httpd on runlevel
+
+      command: systemctl enable httpd
+
+
+    - name: Modify httpd.conf file
+
+      replace:
+                path: /etc/httpd/conf/httpd.conf
+
+        regexp: '^#ServerName www.example.com'
+
+        replace: 'ServerName {{ipaddress}}'
+
+      notify: http restart
+
+
+    - name: copying       index.html file
+
+      template:
+
+        src: ./index.html
+
+        dest: /var/www/html/
+
+        owner: apache
+
+        group: apache
+
+        mode: 644
+
+
+  handlers:
+
+    - name: http restart
+
+      service:
+
+        name: httpd
+
+        state: restarted
+
+
+
+4. Install and configure mysql database
+
+
+---
+- name: Installing and configuring mysql
+
+  hosts: client1
+
+  vars:
+
+
+    DB_USER: "admin"
+
+    DB_PASSWORD: "admin123"
+
+    DB_NAME: "dvsdevops"
+
+  tasks:
+
+    - name: Installing mariadb on server
+
+      yum: name="{{item}}" state=present
+
+      with_items:
+
+       - MySQL-python
+
+       - mariadb-server
+
+
+    - name: Enabling mariadb during runtime
+
+      systemd:
+
+       name: mariadb
+
+       enabled: yes
+
+       state: restarted
+
+
+    - name: Creating the User admin
+
+      mysql_user:
+
+        name: "{{DB_USER}}"
+
+        password: "{{DB_PASSWORD}}"
+
+        priv: '.:ALL'
+
+        state: present
+
+        host: '%'
+
+
+    - name: Creating the database
+
+      mysql_db:
+
+        name: "{{DB_NAME}}"
+
+        state: present

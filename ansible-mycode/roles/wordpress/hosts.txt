@@ -1,0 +1,10 @@
+[all]
+client1
+client2
+[dbserver]
+client1
+[appserver]
+client2
+[apache]
+client1
+client2

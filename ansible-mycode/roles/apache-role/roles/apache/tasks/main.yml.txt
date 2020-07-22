@@ -1,0 +1,24 @@
+---
+# tasks file for apache
+- name: install
+  yum:
+    name: httpd
+    state: latest
+- name: restart
+  service:
+    name: httpd
+    enabled: yes
+    state: restarted
+- name: retrieve metadata
+  command: curl http://169.254.169.254/latest/meta-data/public-ipv4
+  register: output
+- set_fact: ip="{{output.stdout}}"
+- name: repalcing
+  replace:
+    path: /etc/httpd/conf/httpd.conf
+    regexp: '^#ServerName www.example.com'
+    replace: 'ServerName {{ip}}'
+  notify: restart handler
+- name: copying index
+  template: src=index.html dest=/var/www/html/
+  notify: restart handler

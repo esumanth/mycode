@@ -1,0 +1,11 @@
+1. when the pooling interval is completed then the ansible by default execute the script or do we need to provide any option? 
+2.difference b/w copy and template module?
+3.group variable for 2nd clent is not being applied?
+4.Where does the change refelcts when we change the conf file servername to public ip, what else would we be changing in real time?
+5.once searched for word, then it is highlighting everytime, how to reove highlighting after use?
+6. intergration, access key an dsecret key can be given in code? security issue? do we need to use vault?
+7.In roles, what is the meta and defaults used for?
+8.why wp-config.php is not visible clearly?
+9.telnet package, hostname-what should we give, differnce b/w hosts and hostname(inside telent)
+10. what is telnet module in ansible docs?
+11. for telnet.yaml code, the output for devug is hellow world which should not be?

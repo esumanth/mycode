@@ -1,0 +1,15 @@
+output "module-bucket"{
+   value = "${module.s3.bucket-name-is}"
+}
+output "module-vpc"{
+   value = "${module.network.myvpc-is}"
+}
+output "module-secgrp"{
+   value = "${module.network.mysecgroup-is}"
+}
+output "module-subnet"{
+    value = "${module.network.mysubnet-is}"
+}
+output "module-ec2"{
+   value = "${module.ec2.ec2-is}"
+}

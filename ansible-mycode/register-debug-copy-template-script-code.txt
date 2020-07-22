@@ -1,0 +1,22 @@
+---
+- name: working with ansible
+  hosts: all
+  tasks:
+   #- name: command module
+   #  command: "rm -f /tmp/sumanth.txt"
+   #- name: file module
+   #  file:
+   #    path: /tmp/sumanth.txt
+   #    state: touch
+   #- name: copy module
+   #  copy:
+   #    src: /etc/hosts
+   #    dest: /etc/hosts
+   #- name: template module
+   #   template:
+   #    src: /etc/hosts
+   #    dest: /tmp/
+    - name: script module
+      script: ./myscript.py
+      register: myoutput
+    - debug: msg="{{myoutput.stdout_lines}}"

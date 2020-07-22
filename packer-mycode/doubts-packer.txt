@@ -1,0 +1,6 @@
+1. In packer, for each individual server we need to have one ami?
+2 why did we use yum-config-manager --disable jenkins , which is not there in manual install?
+3.* at yu install jenkins
+4. difference b/w jenkins and jenkins-stable?
+
+

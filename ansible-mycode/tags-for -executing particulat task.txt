@@ -1,0 +1,32 @@
+---
+- name: working with loops
+  hosts: all
+  tasks:
+    - name: working with with_items
+      command: echo 'my with_items are {{item}}'
+      with_items:
+        - hello
+        - world
+      tags: t1
+    - name: working with with_items second way
+      command: echo 'my with_items are {{item}}'
+      with_items: ["Hi","sumanth"]
+      tags: t2
+    - name: working with with_fileglob
+      command: echo 'my with_fileglob are {{item}}'
+      with_fileglob:
+        - '/home/ec2-user/myansible/*'
+      tags: t3
+    - name: working with with_lines
+      command: echo 'my with_lines are {{item}}'
+      with_lines: 'cat /home/ec2-user/myansible/playbook1.yaml'
+      tags: t4
+    - name: workingwith with_dict
+      command: echo 'my with_dict key is {{item.key}} my value is {{item.value}}'
+      with_dict:
+       - '{{ansible_default_ipv4}}'
+      tags: t5
+    - name: working with with_sequence
+      command: echo 'my sequence is {{item}}'
+      with_sequence: start=1 end=10
+      tags: t6

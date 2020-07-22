@@ -1,0 +1,28 @@
+git config --global user.name ""
+git config --global user.email ""
+git config --system system.editor "vim"
+git config --list
+cat /etc/gitconfig
+git init .
+git add .
+git status
+git commit -m ""
+git log
+.gitignore
+git clone src dest
+git pull src
+git checkout -b repname
+git branch
+switch: git checkout master
+git merge repo
+branch-merge
+repo-pull
+git tag -a name -m ""
+
+git clone url 
+cd repo
+git checkout -b branchname
+modify
+commit
+git push origin branchname
+

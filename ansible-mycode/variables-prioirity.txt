@@ -1,0 +1,1 @@
+commandline>vars file>vars section in pgm>>hosts_vars>group_vars

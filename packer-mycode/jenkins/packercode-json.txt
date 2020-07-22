@@ -1,0 +1,21 @@
+{
+"variables": {
+   "region": "",
+   "baseimage": "",
+   "sourceimage": ""
+   },
+"builders": [{
+  "type": "amazon-ebs",
+  "profile": "default",
+  "region": "{{ user `region` }}",
+  "source_ami": "{{user `sourceimage` }}",
+  "instance_type": "t2.micro",
+  "ssh_username": "ec2-user",
+  "ami_name": "{{user `baseimage` }}"
+}],
+ "provisioners": [{
+  "type": "shell",
+  "script": "jenkinsscript.sh",
+  "execute_command": "sudo -E -S bash {{.Path}}"
+}]
+}

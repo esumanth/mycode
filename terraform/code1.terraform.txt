@@ -1,0 +1,30 @@
+[root@terraform ec2]# cat main.tf
+provider "aws" {
+        region = "us-east-1"
+}
+
+variable "ami_id" {
+        default = "ami-0323c3dd2da7fb37d"
+}
+variable "key_pair_name" {
+        default = "shaan_mahendra_nvirginia"
+
+}
+variable "server_count" {
+        default = "2"
+}
+resource "aws_instance" "ec2" {
+  ami           = "${var.ami_id}"
+  instance_type = "t2.micro"
+  key_name = "${var.key_pair_name}"
+  tags = {
+    Name = "dvsbatch-${count.index + 1}"
+  }
+  instance_type = "t2.micro"
+  count = "${var.server_count}"
+}
+
+output "pub_ip_address" {
+        value = "${aws_instance.ec2.*.public_ip}"
+}
+

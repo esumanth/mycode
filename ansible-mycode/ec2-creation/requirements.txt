@@ -1,0 +1,3 @@
+configure aws cli
+pip package-sudo yum install python2-pip.noarch -y
+boto3-sudo pip install bto3 boto 

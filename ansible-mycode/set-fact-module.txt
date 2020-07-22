@@ -1,0 +1,9 @@
+---
+- name: working with set_fact module
+  hosts: all
+  tasks:
+    - name: set_fact ouptut
+      command: hostname -i
+      register: output
+    - set_fact: myip="{{output.stdout}}"
+    - command: echo "Ip address is {{myip}}"

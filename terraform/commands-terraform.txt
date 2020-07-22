@@ -1,0 +1,45 @@
+ 1  sudo curl -O https://releases.hashicorp.com/terraform/0.11.13/terraform_0.11.13_linux_amd64.zip
+    2  sudo yum install -y unzip
+    3  sudo unzip terraform_0.11.13_linux_amd64.zip -d /usr/local/bin/
+    4  aws configure
+    5  export AWS_DEFAULT_REGION=us-east-1
+    6  vi ~/.bashrc
+    7  source ~/.bash
+    8  source ~/.bashrc
+    9  aws s3 ls
+   10  history
+   11  mkdir ec2
+   12  cd ec2/
+   13  vi main.tf
+   14  terraform init .
+   15  terraform plan
+   16  vi main.tf
+   17  terraform init .
+   18  terraform plan
+   19  vi main.tf
+   20  terraform plan
+   21  vi main.tf
+   22  terraform plan
+   23  vi main.tf
+   24  terraform plan
+   25  terraform apply
+   26  terraform destroy
+   27  cat main.tf
+   28  ls -l
+   29  cat main.tf
+   30  cd ..
+   31  ls -l
+   32  mkdir newec2
+   33  ls -l
+   34  cd newec2/
+   35  ls -l
+   36  vi main.tf
+   37  cat main.tf
+   38  terraform init .
+   39  vi main.tf
+   40  terraform init .
+   41  vi main.tf
+   42  terraform init .
+   43  vi main.tf
+   44  terraform init .
+

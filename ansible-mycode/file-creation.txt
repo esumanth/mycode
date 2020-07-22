@@ -1,0 +1,13 @@
+file creation
+--------------
+
+---
+- name: working with ansible
+  hosts: all
+  tasks:
+    - name: remove file
+      command: "rm -f /tmp/sumanth.txt"
+    - name: file creation
+      file:
+        path: /tmp/sumanth.txt
+        state: touch

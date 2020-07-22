@@ -1,0 +1,5 @@
+---
+username: admin
+password: admin123
+dbname: wordpress
+dbhost: 10.20.10.183

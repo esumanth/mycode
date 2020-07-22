@@ -1,0 +1,9 @@
+output "myvpc-is"{
+   value = "${aws_vpc.vpc.tags.Name}"
+}
+output "mysecgroup-is"{
+   value = "${aws_security_group.security-group.id}"
+}
+output "mysubnet-is"{
+   value = "${aws_subnet.subnet.id}"
+}

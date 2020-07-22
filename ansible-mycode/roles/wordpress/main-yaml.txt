@@ -1,0 +1,13 @@
+---
+- name: word press db install
+  hosts: dbserver
+  vars_files:
+    - ./roles/vars/main.yaml
+  roles:
+    - mysql
+- name: wordpress app install
+  hosts: appserver
+  vars_files:
+    - ./roles/vars/main.yaml
+  roles:
+    - app

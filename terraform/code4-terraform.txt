@@ -1,0 +1,66 @@
+pip install terraform-validator
+https://pypi.org/project/terraform-validator/
+
+
+above is for validation of terraform code.
+
+provider "aws" {
+
+        region = "us-east-1"
+}
+
+/*    Creating Security Group */
+
+resource "aws_security_group" "mysg" {
+  ingress {
+    protocol  = -1
+    self      = true
+    from_port = 0
+    to_port   = 0
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}
+
+/* Ec2 creation */
+
+variable "ami_id" {
+        default = "ami-0323c3dd2da7fb37d"
+}
+variable "key_pair_name" {
+        default = "shaan_mahendra_nvirginia"
+
+}
+variable "server_count" {
+        default = "1"
+}
+
+resource "aws_instance" "ec2" {
+  ami           = "${var.ami_id}"
+  instance_type = "t2.micro"
+  key_name = "${var.key_pair_name}"
+  tags = {
+    Name = "dvsbatch-${count.index + 1}"
+  }
+  instance_type = "t2.micro"
+  count = "${var.server_count}"
+  vpc_security_group_ids = ["${aws_security_group.mysg.id}"]
+  user_data = "${file("install_apache.sh")}"
+}
+
+output "pub_ip_address" {
+        value = "${aws_instance.ec2.*.public_ip}"
+}
+
+[root@terraform ques4]# cat install_apache.sh
+#!/bin/bash
+yum install httpd -y
+systemctl enable httpd
+systemctl restart httpd
+

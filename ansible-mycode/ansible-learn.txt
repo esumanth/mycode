@@ -1,0 +1,2 @@
+we need to connect to clients atleast once before executing through ansible.
+If the server is in different vpc, then we cannot communicate through ssh.

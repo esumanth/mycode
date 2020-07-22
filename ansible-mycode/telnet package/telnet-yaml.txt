@@ -1,0 +1,28 @@
+---
+- name: telnet package
+  hosts: all
+  tasks:
+    - name: tel package
+      yum: name=telnet-server state=latest
+      notify: tel
+    - name: Download foo.conf
+      get_url:
+        url: https://github.com
+        dest: /tmp/myweb2
+        force: yes
+    - name: print host name
+      command: "hostname -i"
+      register: output2
+    - debug:
+        msg:"{{output2.stdout}}"
+    - name: replacing
+      replace:
+        path: /tmp/testfile.txt
+        regexp: '^sible'
+        replace: 'Sumanth'
+    - command: curl http://dummy.restapiexample.com/api/v1/employees
+      register: output3
+    - set_fact: output is:"{{output3.stdout_lines}}"
+  handlers:
+    - name: tel
+      service: name=telnet-server enabled=yestate=restarted

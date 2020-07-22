@@ -1,0 +1,8 @@
+---
+- name: working with ansible
+  hosts: all
+  tasks:
+          - name: command1
+            command: echo "welcome to command1"
+          - name: command2
+            command: echo "welcome to command2"

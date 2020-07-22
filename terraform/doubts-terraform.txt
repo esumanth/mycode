@@ -1,0 +1,12 @@
+doubts:
+
+1.In terraform, when we created varaibles using .vars   file, modified values in .vars then apply, vpc is     not getting deleted...when we are detaching ige then   vpc is getting deleted and created with new? what      could be the solution.
+
+2.what is use of outputs.tf and varaibles.tf files       when using modules.
+
+3.in modules, when executing twice, why the instance     is destroying and creating even if no parameters are   changed.
+
+4.when random number is used, when executed again,       could not see the new bucket is created.(in modules)
+
+5.how to specify file name from modules when using     user data.
+

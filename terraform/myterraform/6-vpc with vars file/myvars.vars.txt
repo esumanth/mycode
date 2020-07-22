@@ -1,0 +1,7 @@
+vpc-cidr="10.40.0.0/16"
+vpc-tag="myvpc2"
+igw-tag="myigw2"
+route-tag="myroute2"
+subnet-cidr="10.40.10.0/24"
+subnet-tag="mysubnet2"
+secgroup-tag="mysecgroup2"

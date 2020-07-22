@@ -1,0 +1,21 @@
+variable "vpc-cidr"{
+   default = "10.20.0.0/16"
+}
+variable "vpc-tag"{
+   default = "myvpc"
+}
+variable "igw-tag"{
+  default = "myigw"
+}
+variable "route-tag"{
+ default = "myroute"
+}
+variable "subnet-cidr"{
+  default = "10.20.10.0/24"
+}
+variable "subnet-tag"{
+  default = "mysubnet"
+}
+variable "secgroup-tag"{
+  default = "mysecgroup"
+}

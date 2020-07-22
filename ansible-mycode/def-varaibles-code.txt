@@ -1,0 +1,19 @@
+---
+- name: working with variables
+  hosts: all
+  vars:
+    - var1: 20
+  vars_files:
+    - myvars.yaml
+  tasks:
+    - name: using variables
+      command: echo "my variable is {{var1}}"
+    - name: using hosts
+      command: echo "my vars_files variable is {{var2}}"
+    - name: using host_vars variables
+      command: echo "my hosts_vars file varaible is {{var3}}"
+    - name:  using group_vars variables
+      command: echo "my group_vars variable is {{var4}}"
+
+#define directory group_vars and host_vars in same directory.
+#define files with same server name(host_vars) and #group name(group_vars) 

@@ -1,0 +1,19 @@
+---
+- name: working with when conditions
+  hosts: all
+  vars:
+    - myvar : 20
+  tasks:
+    - name: when condition with and operation
+      command: echo 'Hi I am and operation for when'
+      when: ansible_os_family == 'RedHat' and ansible_pkg_mgr == 'yum'
+    - name: when condition with or operation
+      command: echo 'Hi I am or operation for when'
+      when: ansible_os_family == 'RedHat' or myvar == 20
+    - name: when condition for defined operation
+      command: echo 'Hi I am defined operation for when'
+      when: myvar is defined
+    - name: when condition with greater than operator
+      command: echo 'Hi I am greater than for when'
+      when: '{{myvar}} >= 20'
+

@@ -1,0 +1,15 @@
+variable "env"{
+  description = "dev/prd"
+}
+variable "server_name"{
+   default = {
+   "dev" =  "Dev-Server"
+   "prod" = "Prod-Server"
+   }
+}
+variable "keyname"{
+  default = {
+  "dev" = "EC2-Server1"
+  "prod" = "ram-key"
+  }
+}

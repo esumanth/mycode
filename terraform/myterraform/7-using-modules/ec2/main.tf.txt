@@ -1,0 +1,14 @@
+provider "aws" {
+  region  = "us-east-1"
+}
+resource "aws_instance" "ec2" {
+  ami           = "${var.amiid}"
+  instance_type = "${var.instype}"
+  key_name      = "${var.keyname}"
+  security_groups = ["${var.mysecgrp}"]
+  subnet_id = "${var.mysub}"
+
+  tags = {
+    Name = "TerraformEC2"
+  }
+}

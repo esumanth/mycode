@@ -1,0 +1,13 @@
+provider "aws" {
+  region  = "us-east-1"
+}
+resource "aws_instance" "Server" {
+  ami           = "ami-09d95fab7fff3776c"
+  instance_type = "t2.micro"
+  key_name = "${lookup(var.keyname,var.env)}"
+  security_groups = ["opentoworld"]
+  count = 1
+  tags = {
+    Name = "${lookup(var.server_name,var.env)}"
+  }
+}

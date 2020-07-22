@@ -1,0 +1,24 @@
+---
+- name: ec2 creation
+  hosts: localhost
+  vars:
+    - vcount: 0
+  tasks:
+    - name: creating ec2
+      ec2:
+        aws_access_key: AKIA377QWILYEEGYCHUK
+        aws_secret_key: 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
+        key_name: EC2-Server1
+        group: terraform-20200611015335433400000001
+        instance_type: t2.micro
+        image: ami-09d95fab7fff3776c
+        wait: yes
+        count: "{{vcount}}"
+        instance_tags:
+          Name: ansible-server
+        monitoring: yes
+        vpc_subnet_id: subnet-0d153eb70b9254823
+        assign_public_ip: yes
+        region: us-east-1
+      register: output
+    - debug: msg="{{output}}"

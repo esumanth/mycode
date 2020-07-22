@@ -1,0 +1,5 @@
+{
+"region": "us-east-1",
+"sourceimage": "ami-09d95fab7fff3776c",
+"baseimage": "packer-image3"
+}
