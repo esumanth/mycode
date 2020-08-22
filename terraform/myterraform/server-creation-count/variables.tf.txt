@@ -1,0 +1,17 @@
+variable "amiid"{
+   default = "ami-02354e95b39ca8dec"
+}
+variable "instype"{
+ default = "t2.micro"
+}
+variable "server_count"{
+}
+variable "keyname"{
+  default = "EC2-Server1"
+}
+variable "mysecgrp"{
+  default = "sg-08c917de9b5e71396"
+}
+variable "mysub"{
+  default = "subnet-d29ea5ec"
+}
