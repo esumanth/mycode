@@ -1,0 +1,8 @@
+Redhat/Centos:
+
+https://protect-eu.mimecast.com/s/Ja74CZYB4F5B054OujNCGX?domain=digitalocean.com
+
+Amazon Image:
+Normal Form::
+sudo amazon-linux-extras install epel -y
+sudo yum install ansible -y
