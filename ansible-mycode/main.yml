@@ -1,0 +1,8 @@
+---
+- name: tomcat installation
+  hosts: all
+  become: true
+  vars_files:
+    - ./roles/tomcat-role/vars/main.yml
+  roles:
+    - tomcat-role

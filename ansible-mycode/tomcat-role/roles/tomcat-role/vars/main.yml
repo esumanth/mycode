@@ -1,0 +1,15 @@
+---
+version: 8.5.56
+tomcat_roles:
+      - role: "manager-gui"
+      - role: "manager-script"  
+tomcat_users:
+      - username: "sumanth"
+        password: "sumanth"
+        roles: "manager-script,manager-gui"
+      - username: "rama"
+        password: "rama"
+        roles: "manager-script,manager-gui"
+      - username: "krish"
+        password: "krish"
+        roles: "manager-gui"  

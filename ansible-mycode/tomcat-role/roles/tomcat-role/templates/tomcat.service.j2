@@ -1,0 +1,13 @@
+# Systemd unit file for tomcat
+[Unit]
+Description=Apache Tomcat service
+After=syslog.target network.target
+
+[Service]
+Type=forking
+
+ExecStart=/root/tomcat8.5/bin/startup.sh
+ExecStop=/root/tomcat8.5/bin/shutdown.sh
+
+[Install]
+WantedBy=multi-user.target
