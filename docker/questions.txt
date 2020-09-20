@@ -1,0 +1,19 @@
+how does docker hub points by default?
+/bin/bash if given and not given whats difference?
+when adding user during install of nginx with yum install, cotainer is exiting?
+during pushing through fqdn, acess is required like we login to dockerhiub?
+what is catalinaa?
+can we zip container?
+how to choose ip address/subnet values? error when specifyign some range.
+why maven install path different path is diiferent in docker from jenkins?
+difference between catlina restart and start.sh in tomcat?
+all the installations for java/maven/tomcat to be done in root level?we will have access?
+will we remove the values lines in context.xml?
+if private library, how to provide user id and passwod? security restriction?
+for multistage docker file, java home varailalbesnot set?
+how to communicate between containers?
+
+CI&CD:
+what is the use of building and destroying the containers using stages?
+databases for java,nodejs,spring boot?
+

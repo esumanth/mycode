@@ -1,0 +1,23 @@
+pipeline{
+    agent any
+    stages{
+        stage("working with pipeline"){
+          steps{
+              script{
+            for (i in (1..5)){
+                if (i == 4){
+                continue
+            }
+            println i
+            }
+            for (i in [5,6,7,8,9]){
+                if (i == 8){
+                    break
+                }
+                println i
+                }
+            }
+             }
+               }
+             }
+              }

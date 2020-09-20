@@ -1,0 +1,25 @@
+pipeline{
+    agent any
+    stages{
+        stage("working with funcitons"){
+            steps{
+                script{
+                File obj1 = new File("/tmp/file1.txt")
+                obj1.write('Hi')
+                println obj1.readLines()
+                obj1.append("hello")
+                println obj1.text
+                for (i in obj1.readLines()){
+                    println i
+                }
+                File obj2 = new File("/tmp/file2.txt")
+                obj2 << obj1.text
+                println ("file legth is ${obj2.length()}")
+                println ("is file is ${obj1.isFile()}")
+                println ("is directory is ${obj2.isDirectory()}")
+                println obj2.text
+                }
+                }
+            }
+        }
+    }

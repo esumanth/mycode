@@ -1,0 +1,7 @@
+FROM myimage
+WORKDIR /opt/myapplication
+RUN yum install git -y \
+ && git clone github.com:esumanth/docker-dev.git /opt/myapplication \
+ && mvn clean install \
+ && mv ./target/myweb*.war /opt/tomcat/webapps/apps.war
+CMD ["/opt/tomcat/bin/catalina.sh", "run"]

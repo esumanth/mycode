@@ -1,0 +1,37 @@
+yum install docker -y
+systemctl enable docker
+systemctl restart docker
+
+default directory- /var/lib/docker
+
+docker info
+registry-stores images.
+Dockerhub alternative is nexus/ECR
+
+docker run it --name cont1 centos
+
+active:docker ps
+all:docker ps -a
+list:docker images
+start:docker start cont1
+login:docker exec -it cont1 /bin/bash
+comeout:ctrl p q
+only image:docker pull centos:6
+dont login:docker run -it -d centos -d /bin/bash
+
+docker commit container-id myimage:v1
+docker run -it --name final myimage:v1 /bin/bash
+
+Dockerfile
+FROM 
+RUN
+
+docker build -t mycustom:v1 .
+-----------------------------------------------------------
+ENV- environment variable
+ADD-copies and unarchive the tar files
+COPY-only copies
+USER:to run as user
+
+removing all container: docker rm -f $(docker ps -a -q)
+removing all images: for image in $(docker images|grep -v -e "REPOSITORY"|awk {'print $(3)'}); do  docker rmi -f $image; done

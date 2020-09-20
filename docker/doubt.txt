@@ -1,0 +1,13 @@
+FROM myimage
+COPY github_key .
+RUN yum install openssh-clients -y \
+   && eval $(ssh-agent) \
+   && ssh-add github_key \
+   && mkdir -p /etc/.ssh/known_hosts \
+   && ssh-keyscan -H github.com >> /etc/.ssh/ssh_known_hosts
+WORKDIR /opt/myapplication
+RUN yum install git -y \
+ && git clone github.com:esumanth/docker-dev.git /opt/myapplication \
+ && mvn clean install \
+ && mv ./target/myweb*.war /opt/tomcat/webapps/apps.war
+CMD ["/opt/tomcat/bin/catalina.sh", "run"]

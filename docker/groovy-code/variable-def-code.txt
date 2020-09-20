@@ -1,0 +1,13 @@
+pipeline{
+    agent any
+    stages{
+        stage("working with pipeline"){
+          steps{
+              script{
+            def val=20
+            println "my value is ${val}"
+               }
+        }
+    }
+}
+}

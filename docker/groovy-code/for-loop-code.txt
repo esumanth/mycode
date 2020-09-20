@@ -1,0 +1,28 @@
+pipeline{
+    agent any
+    stages{
+        stage("working with pipeline"){
+          steps{
+              script{
+             def a=1
+             while(a<=10){
+             println a
+             a=a+1
+             }
+             println "----------------"
+             for (i=0;i>10;i++){
+                 println i
+             }
+             println "---------------"
+             for (i in (2..4)){
+                 println i
+             }
+             println "-------------"
+             for (i in ["abc", "def", "ghi"]){
+                 println i
+             }
+             }
+               }
+             }
+              }
+              }
